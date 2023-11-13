@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="/dist/scrollerfx.css">
+    <style>
+        .block {
+            width: 100%;
+            height: 300px;
+            background: #0d0d0d;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+        }
+
+        .block-break {
+            height: 70vh;
+        }
+
+        .anim-3 {
+            background: #d0d0d0;
+            animation: anim3 4s ease forwards;
+        }
+
+        .anim-1 {
+            animation: anim1 2s ease forwards;
+        }
+
+
+        @keyframes anim1 {
+            100% {
+                background: #ff0000;
+            }
+        }
+
+        @keyframes anim3 {
+            100% {
+                background: #123d99;
+            }
+        }
+    </style>
+</head>
+
+<body>sss
+    <div class="container">
+        <!-- Content here -->
+        <div class="row">
+            <div class="col">
+                <div class="block anim-1"> ANIMATION 1</div>
+            </div>
+            <div class="col anim-2">
+                <div class="block">ANIMATION 2</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="block block-break">BREAK</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="block anim-3">ANIMATION 3</div>
+            </div>
+            <div class="col">
+                <div class="block anim-4">ANIMATION 4</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="block block-break">BREAK</div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="/dist/scrollerfxdd.js"></script>
+<script src="./main.js"></script>
+
+</html>

@@ -1,0 +1,6 @@
+.sc-paused {
+  animation: none !important;
+}
+.sc-finished {
+  animation-iteration-count: 1 !important;
+}
