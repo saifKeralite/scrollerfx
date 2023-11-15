@@ -13,6 +13,9 @@ module.exports = {
     filename: "[name].js",
     path: path.resolve(__dirname, "dist"),
     publicPath: "/",
+    library: "scrollerfx", // Replace 'YourModule' with your desired global variable name
+    libraryTarget: "umd",
+    umdNamedDefine: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -29,14 +32,6 @@ module.exports = {
   ],
   module: {
     rules: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: {
-          loader: "babel-loader",
-        },
-        include: /scrollerfx/,
-      },
       {
         test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, "css-loader"],
