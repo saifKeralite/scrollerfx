@@ -1,7 +1,7 @@
 {
   "name": "scrollerfx",
   "version": "1.0.0",
-  "description": "A library for smooth scrolling and animations",
+  "description": "A library to configure scroll and animation",
   "main": "dist/scrollerfx.js",
   "style": "dist/scrollerfx.css",
   "scripts": {
