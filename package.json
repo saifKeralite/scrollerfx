@@ -1,6 +1,6 @@
 {
   "name": "scrollerfx",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "description": "A library to configure scroll and animation",
   "main": "dist/scrollerfx.js",
   "style": "dist/scrollerfx.css",
