@@ -12,19 +12,6 @@ let touchStartY;
 
 let allowScrolling = false;
 let activateScroll = false;
-// function handleScroll(event, settings) {
-//   if (!allowScrolling) {
-//     event.preventDefault(); // Prevent the default scroll behavior
-//   } else {
-//     const currentScrollTop =
-//       window.scrollY || document.documentElement.scrollTop;
-//     const delta = event.deltaY * settings; // Adjust the scroll speed
-//     window.scrollTo({
-//       top: currentScrollTop + delta,
-//       behavior: "smooth", // Use smooth scrolling for a nicer effect
-//     });
-//   }
-// }
 
 function isClassVisible(className, count, callback) {
   const elements = document.querySelectorAll(className);
@@ -104,13 +91,11 @@ function scrollerFx(options) {
     window.addEventListener("touchstart", function (event) {
       // Store the initial touch position
       touchStartY = event.touches[0].clientY;
-      console.log(touchStartY, "tap");
     });
 
     window.addEventListener("touchmove", function (event) {
       // Calculate the distance moved
       const deltaY = touchStartY - event.touches[0].clientY;
-      console.log(deltaY, event);
       // Pass the distance to your scroll handler function
       handleScroll(
         event,
