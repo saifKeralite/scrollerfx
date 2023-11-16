@@ -1,7 +1,10 @@
+import { handleScroll } from "./utilities";
+
 // Set the scroll speed factor (adjust this value to control the scroll speed)
 const scrollSpeedFactor = 4; // Adjust as needed
 let currentBreakCount = 0;
 let currentCount = 0;
+let touchStartY;
 /**
  * To handle scroll event
  * @param {*} event - event parameter.
@@ -9,19 +12,19 @@ let currentCount = 0;
 
 let allowScrolling = false;
 let activateScroll = false;
-function handleScroll(event, settings) {
-  if (!allowScrolling) {
-    event.preventDefault(); // Prevent the default scroll behavior
-  } else {
-    const currentScrollTop =
-      window.scrollY || document.documentElement.scrollTop;
-    const delta = event.deltaY * settings; // Adjust the scroll speed
-    window.scrollTo({
-      top: currentScrollTop + delta,
-      behavior: "smooth", // Use smooth scrolling for a nicer effect
-    });
-  }
-}
+// function handleScroll(event, settings) {
+//   if (!allowScrolling) {
+//     event.preventDefault(); // Prevent the default scroll behavior
+//   } else {
+//     const currentScrollTop =
+//       window.scrollY || document.documentElement.scrollTop;
+//     const delta = event.deltaY * settings; // Adjust the scroll speed
+//     window.scrollTo({
+//       top: currentScrollTop + delta,
+//       behavior: "smooth", // Use smooth scrolling for a nicer effect
+//     });
+//   }
+// }
 
 function isClassVisible(className, count, callback) {
   const elements = document.querySelectorAll(className);
@@ -86,12 +89,45 @@ function scrollerFx(options) {
     window.addEventListener(
       "wheel",
       function (event) {
-        handleScroll(event, getSpeed ? getSpeed : options["scrollSpeed"]);
+        handleScroll(
+          event,
+          getSpeed ? getSpeed : options["scrollSpeed"],
+          allowScrolling,
+          event.deltaY
+        );
       },
       {
         passive: false,
       }
     );
+
+    window.addEventListener("touchstart", function (event) {
+      // Store the initial touch position
+      touchStartY = event.touches[0].clientY;
+      console.log(touchStartY, "tap");
+    });
+
+    window.addEventListener("touchmove", function (event) {
+      // Calculate the distance moved
+      const deltaY = touchStartY - event.touches[0].clientY;
+      console.log(deltaY, event);
+      // Pass the distance to your scroll handler function
+      handleScroll(
+        event,
+        getSpeed ? getSpeed : options["scrollSpeed"],
+        allowScrolling,
+        deltaY
+      );
+
+      // Prevent default scrolling behavior
+      event.preventDefault();
+    });
+
+    window.addEventListener("touchend", function () {
+      // Clear the touch start position
+      touchStartY = null;
+    });
+
     // Find all elements with the provided class names in the breaks array
     settings.breaks.forEach((breakClassName, i) => {
       const element = document.querySelector(`${breakClassName}`);

@@ -19,7 +19,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./test/index.html", // Path to your index.html template
+      template: "./src/index.html", // Path to your index.html template
     }),
     new MiniCssExtractPlugin({
       filename: "[name].css",
