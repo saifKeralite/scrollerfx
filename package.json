@@ -1,14 +1,14 @@
 {
   "name": "scrollerfx",
-  "version": "1.0.0",
-  "description": "A library for smooth scrolling and animations",
+  "version": "1.0.4",
+  "description": "A library to configure scroll and animation",
   "main": "dist/scrollerfx.js",
   "style": "dist/scrollerfx.css",
   "scripts": {
     "start-all": "npm-run-all -s link-parent link-subfolder run-test",
     "link-parent": "npm link",
     "link-subfolder": "cd test && npm link scrollerfx",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"Error: no test specified\"",
     "start": "http-server -p 3001",
     "build": "webpack --config webpack.config.js",
     "run-test": "npm --prefix test run build && npm --prefix test start"
